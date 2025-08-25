@@ -62,11 +62,6 @@ public class Stat
         MarkDirty();
     }
 
-    public void RemoveModifier(StatModifierData modifier)
-    {
-        if (modifiers.RemoveAll(m => m.Modifier == modifier) > 0)
-            MarkDirty();
-    }
     public void RemoveModifiersBySource(object source)
     {
         if (modifiers.RemoveAll(m => m.Modifier.source == source) > 0)

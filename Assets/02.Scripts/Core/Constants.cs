@@ -7,11 +7,8 @@ namespace Constants
         Attack,
         Defense,
         MoveSpeed,
-        JumpForce,
-        DashForce,
-        DashDuration,
-        DashCooldown,
     }
+
     public enum ModifierType
     {
         Additive,     // +5
@@ -31,8 +28,6 @@ namespace Constants
         SFX,
     }
 
-    public static class AnimatorHash
-    {
-    }
+    public static class AnimatorHash { }
 
 }

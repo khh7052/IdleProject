@@ -25,4 +25,7 @@ public class ResourceStat : Stat
         OnCurrentValueChanged?.Invoke(currentValue);
     }
 
+    public void Restore(float amount) => SetCurrentValue(CurrentValue + amount);
+    public void Reduce(float amount) => SetCurrentValue(CurrentValue - amount);
+
 }

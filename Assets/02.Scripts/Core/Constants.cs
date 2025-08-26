@@ -1,3 +1,4 @@
+using UnityEngine;
 namespace Constants
 {
     public enum StatType
@@ -28,6 +29,11 @@ namespace Constants
         SFX,
     }
 
-    public static class AnimatorHash { }
+    public static class AnimatorHash
+    {
+        public static int IdleHash = Animator.StringToHash("Idle");
+        public static int ChaseHash = Animator.StringToHash("Chase");
+        public static int AttackHash = Animator.StringToHash("Attack");
+    }
 
 }

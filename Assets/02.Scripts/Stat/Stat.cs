@@ -26,7 +26,7 @@ public class Stat
         public bool IsExpired => Modifier.useDuration && Time.time >= expireTime;
     }
 
-    private readonly List<TimedModifier> modifiers = new();
+    private List<TimedModifier> modifiers = new();
     private float finalValue;
     private bool isDirty = true;
 
@@ -42,11 +42,9 @@ public class Stat
         }
     }
 
-    public Stat(StatType type, float baseValue = 0f)
+    public virtual void Initialize()
     {
-        this.type = type;
-        this.baseValue = baseValue;
-        finalValue = baseValue;
+        modifiers ??= new();
     }
 
     public void SetBaseValue(float value)
@@ -71,7 +69,7 @@ public class Stat
     // ----------------- 내부 로직 -----------------
     private void RemoveExpiredModifiers()
     {
-        if (modifiers.RemoveAll(m => m.IsExpired) > 0)
+        if (modifiers.RemoveAll(m => m == null || m.IsExpired) > 0)
             MarkDirty();
     }
 

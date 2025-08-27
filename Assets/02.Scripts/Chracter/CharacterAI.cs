@@ -10,6 +10,8 @@ public class CharacterAI : MonoBehaviour
     [SerializeField] private AnimationHandler animationHandler;
     private StateMachine stateMachine;
 
+
+    public CharacterStats Stats => stats;
     public NavmeshController NavmeshController => navmeshController;
     public AnimationHandler AnimationHandler => animationHandler;
     public StateMachine StateMachine => stateMachine;

@@ -2,27 +2,39 @@ using UnityEngine;
 using Constants;
 using System;
 
-[System.Serializable]
+[Serializable]
 public class ResourceStat : Stat
 {
-    public event Action<float> OnCurrentValueChanged;
+    public event Action<float> CurrentValueChanged;
 
     [SerializeField] private float currentValue;
 
-    public ResourceStat(StatType type, float baseValue) : base(type, baseValue)
+    public override void Initialize()
     {
-        SetCurrentValue(FinalValue);
-        FinalValueChanged += SetCurrentValue;
+        base.Initialize();
+        FinalValueChanged += OnFinalValueChanged;
     }
 
     public float CurrentValue => currentValue;
 
+
+    public void OnFinalValueChanged(float value)
+    {
+        Debug.Log($"OnFinalValueChanged: {value} (FinalValue: {FinalValue})");
+        if(currentValue > value)
+        {
+            currentValue = value;
+            CurrentValueChanged?.Invoke(currentValue);
+        }
+    }
+
     public void SetCurrentValue(float value)
     {
+        Debug.Log($"SetCurrentValue: {value} (FinalValue: {FinalValue})");
         float clampedValue = Mathf.Clamp(value, 0, FinalValue);
         if (currentValue == clampedValue) return;
         currentValue = clampedValue;
-        OnCurrentValueChanged?.Invoke(currentValue);
+        CurrentValueChanged?.Invoke(currentValue);
     }
 
     public void Restore(float amount) => SetCurrentValue(CurrentValue + amount);

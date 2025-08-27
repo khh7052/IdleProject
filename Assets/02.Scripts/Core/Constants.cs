@@ -3,8 +3,9 @@ namespace Constants
 {
     public enum StatType
     {
-        MaxHP,
-        CurrentHP,
+        HP,
+        MP,
+        Experience,
         Attack,
         Defense,
         MoveSpeed,

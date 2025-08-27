@@ -1,17 +1,21 @@
+using System;
 using System.Collections.Generic;
 using Constants;
+using UnityEngine;
 
+[Serializable]
 public class CharacterStats
 {
-    private readonly Dictionary<StatType, Stat> stats = new();
+    [SerializeField] private Stat[] stats;
+    private readonly Dictionary<StatType, Stat> statDict = new();
 
-    public void AddStat(Stat stat)
+    public void Initalize()
     {
-        if (!stats.ContainsKey(stat.Type))
-            stats.Add(stat.Type, stat);
+        foreach (var stat in stats)
+            statDict[stat.Type] = stat;
     }
 
-    public Stat GetStat(StatType type) => stats[type];
+    public Stat GetStat(StatType type) => statDict[type];
 
     public void AddModifier(StatModifierData modifier)
     {
@@ -20,7 +24,7 @@ public class CharacterStats
 
     public void RemoveModifiersBySource(object source)
     {
-        foreach (var stat in stats.Values)
+        foreach (var stat in statDict.Values)
             stat.RemoveModifiersBySource(source);
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using Constants;
 
 public class ChaseState : CharacterState
 {
@@ -10,7 +11,7 @@ public class ChaseState : CharacterState
     public override void Enter()
     {
         base.Enter();
-        AnimationHandler?.PlayChase();
+        SetAnimation(AnimatorHash.ChaseHash, true); // 달리기 애니메이션 재생
         NavmeshController.IsStopped = false; // 이동 시작
     }
 
@@ -26,5 +27,11 @@ public class ChaseState : CharacterState
         }
 
         NavmeshController.SetDestination(character.Target.position);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        SetAnimation(AnimatorHash.ChaseHash, false); // 달리기 애니메이션 재생
     }
 }

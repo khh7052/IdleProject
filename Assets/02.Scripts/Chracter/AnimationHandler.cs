@@ -12,7 +12,6 @@ public class AnimationHandler : MonoBehaviour
         if(animator == null)
             animator = GetComponentInChildren<Animator>();
     }
-
-    public void PlayIdle() => animator?.Play(AnimatorHash.IdleHash);
-    public void PlayChase() => animator?.Play(AnimatorHash.ChaseHash);
+    public void SetBool(int paramHash, bool value) => animator?.SetBool(paramHash, value);
+    public void SetTrigger(int paramHash) => animator?.SetTrigger(paramHash);
 }

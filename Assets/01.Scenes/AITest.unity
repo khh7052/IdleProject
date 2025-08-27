@@ -654,6 +654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a5f8e2d0252ce46ad641f8e8bb6ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    stats: []
   navmeshController: {fileID: 1777483235}
   animationHandler: {fileID: 0}
 --- !u!136 &1777483238

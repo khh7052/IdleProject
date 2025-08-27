@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(NavmeshController))]
 public class CharacterAI : MonoBehaviour
 {
+    [SerializeField] private CharacterStats stats;
     [SerializeField] private NavmeshController navmeshController;
     [SerializeField] private AnimationHandler animationHandler;
     private StateMachine stateMachine;
@@ -16,13 +17,13 @@ public class CharacterAI : MonoBehaviour
 
     private void Awake()
     {
-        if (navmeshController == null)
-            navmeshController = GetComponent<NavmeshController>();
-
-        if (animationHandler == null)
-            animationHandler = GetComponentInChildren<AnimationHandler>();
-
+        stats ??= new();
+        navmeshController ??= GetComponent<NavmeshController>();
+        animationHandler ??= GetComponentInChildren<AnimationHandler>();
         stateMachine = new();
+
+        // 캐릭터 스탯 초기화
+        stats.Initalize();
 
         // 상태 등록
         stateMachine.AddState(new IdleState(this));

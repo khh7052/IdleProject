@@ -17,4 +17,11 @@ public class CharacterState : IState
     public virtual void Execute() { }
 
     public virtual void Exit() { }
+
+    public void SetAnimation(int animHash) => AnimationHandler?.SetTrigger(animHash);
+    public void SetAnimation(int animHash, bool value) => AnimationHandler?.SetBool(animHash, value);
+
+    public void MoveTo(Vector3 destination) => NavmeshController?.SetDestination(destination);
+
+
 }

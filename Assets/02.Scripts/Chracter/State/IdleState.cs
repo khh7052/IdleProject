@@ -1,4 +1,4 @@
-using UnityEngine;
+using Constants;
 
 public class IdleState : CharacterState
 {
@@ -7,7 +7,7 @@ public class IdleState : CharacterState
     public override void Enter()
     {
         base.Enter();
-        AnimationHandler?.PlayIdle();
+        SetAnimation(AnimatorHash.IdleHash, true); // 대기 애니메이션 재생
         NavmeshController.IsStopped = true; // 이동 멈춤
     }
 
@@ -21,6 +21,12 @@ public class IdleState : CharacterState
             // 타겟이 있으면 추적 상태로 전환
             character.StateMachine.ChangeState<ChaseState>();
         }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        SetAnimation(AnimatorHash.IdleHash, false); // 대기 애니메이션 중지
     }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Constants;
 
 [RequireComponent(typeof(NavmeshController))]
@@ -11,6 +12,7 @@ public class CharacterAI : MonoBehaviour
     [SerializeField] private LayerMask targetLayerMask;
     [SerializeField] private NavmeshController navmeshController;
     [SerializeField] private AnimationHandler animationHandler;
+    [SerializeField] private Image hpBar;
     [SerializeField] private bool useGizmo;
 
     private StateMachine stateMachine;
@@ -32,6 +34,8 @@ public class CharacterAI : MonoBehaviour
     public float Damage => stats.GetStat(StatType.Damage).FinalValue;
     public float AttackRange => stats.GetStat(StatType.AttackRange).FinalValue;
     public float AttackRate => stats.GetStat(StatType.AttackRate).FinalValue;
+    public float Defense => stats.GetStat(StatType.Defense).FinalValue;
+
 
     private void Awake()
     {
@@ -63,8 +67,17 @@ public class CharacterAI : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        // 방어력 적용
+        damage -= Defense;
+
+        // 데미지 적용
         stats.GetResourceStat(StatType.HP).Reduce(damage);
 
+        // HP바 갱신
+        if (hpBar != null)
+            hpBar.fillAmount = HP / MaxHP;
+
+        // 사망 체크
         if (HP <= 0)
         {
             Die();
@@ -74,6 +87,7 @@ public class CharacterAI : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{gameObject.name} 사망");
+        gameObject.SetActive(false);
     }
 
     private void OnDrawGizmos()

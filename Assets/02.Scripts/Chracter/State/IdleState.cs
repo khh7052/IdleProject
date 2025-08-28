@@ -13,7 +13,7 @@ public class IdleState : CharacterState
         NavmeshController.IsStopped = true; // ¿Ãµø ∏ÿ√„
 
         if (character.TeamType == TeamType.Enemy)
-            chaseTarget = GameManager.Instance.player;
+            chaseTarget = GameManager.Instance.player.transform;
     }
 
     public override void Execute()

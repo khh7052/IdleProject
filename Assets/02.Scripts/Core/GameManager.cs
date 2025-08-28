@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private string stage = "Statge";
     [SerializeField] private ulong gold = 100;
 
-    public Transform player;
+    public CharacterAI player;
 
     public string CurrentStage => stage;
     public ulong Gold => gold;
@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Initialize();
         if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterAI>();
     }
     public void SetStage(string stage)
     {
@@ -28,18 +28,10 @@ public class GameManager : Singleton<GameManager>
         StageChanged?.Invoke(stage);
     }
 
-    public void AddGold(ulong amount)
+    public void SetGold(ulong gold)
     {
-        gold += amount;
+        this.gold = gold;
         GoldChanged?.Invoke(gold);
-    }
-
-    public bool SpendGold(ulong amount)
-    {
-        if (gold < amount) return false;
-        gold -= amount;
-        GoldChanged?.Invoke(gold);
-        return true;
     }
 
 }

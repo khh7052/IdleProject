@@ -39,6 +39,13 @@ namespace Constants
         SFX,
     }
 
+    public enum ItemType
+    {
+        Weapon,
+        Armor,
+        Consumeable,
+    }
+
     public static class AnimatorHash
     {
         public static int IdleHash = Animator.StringToHash("Idle");

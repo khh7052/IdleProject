@@ -1,9 +1,11 @@
 using UnityEngine;
+using Constants;
 
 [CreateAssetMenu(menuName = "Data/ItemData")]
 public class ItemData : ScriptableObject
 {
     public string itemName;
+    public ItemType itemType;
     public Sprite icon;
     
     public StatModifierData[] baseModifiers; 

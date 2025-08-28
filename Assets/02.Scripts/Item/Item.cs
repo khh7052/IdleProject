@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Constants;
 
 [System.Serializable]
 public class Item
@@ -7,14 +8,16 @@ public class Item
     public int level = 1;
 
     public int Level => level;
+    public string Name => data.itemName;
+    public ItemType Type => data.itemType;
 
     // 업그레이드 시도
-    public bool TryUpgrade(ref float playerGold)
+    public bool TryUpgrade(ref float gold)
     {
         float cost = data.GetUpgradeCost(level);
-        if (playerGold >= cost && level < data.maxLevel)
+        if (gold >= cost && level < data.maxLevel)
         {
-            playerGold -= cost;
+            gold -= cost;
             level++;
             return true;
         }

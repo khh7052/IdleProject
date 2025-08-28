@@ -20,7 +20,6 @@ public class ResourceStat : Stat
 
     public void OnFinalValueChanged(float value)
     {
-        Debug.Log($"OnFinalValueChanged: {value} (FinalValue: {FinalValue})");
         if(currentValue > value)
         {
             currentValue = value;
@@ -30,7 +29,6 @@ public class ResourceStat : Stat
 
     public void SetCurrentValue(float value)
     {
-        Debug.Log($"SetCurrentValue: {value} (FinalValue: {FinalValue})");
         float clampedValue = Mathf.Clamp(value, 0, FinalValue);
         if (currentValue == clampedValue) return;
         currentValue = clampedValue;

@@ -291,7 +291,7 @@ MonoBehaviour:
     - type: 4
       baseValue: 100
     - type: 3
-      baseValue: 20
+      baseValue: 60
     resourceStats:
     - type: 0
       baseValue: 50

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Constants;
+using System;
 
 [RequireComponent(typeof(NavmeshController))]
 public class CharacterAI : MonoBehaviour
 {
+    public event Action DieAction;
+
     [SerializeField] private CharacterStats stats;
     [SerializeField] private TeamType teamType;
     [SerializeField] private LayerMask targetLayerMask;
@@ -17,7 +20,17 @@ public class CharacterAI : MonoBehaviour
 
     private StateMachine stateMachine;
 
-    public CharacterStats Stats => stats;
+    public CharacterStats Stats
+    {
+        get
+        {
+            if(!stats.IsInitialized)
+                stats.Initalize();
+
+            return stats;
+        }
+    }
+
     public TeamType TeamType => teamType;
     public LayerMask TargetLayerMask => targetLayerMask;
     public NavmeshController NavmeshController => navmeshController;
@@ -98,10 +111,11 @@ public class CharacterAI : MonoBehaviour
         {
             // 플레이어에게 경험치와 골드 지급
             var player = GameManager.Instance.player;
-            player?.Stats.GetResourceStat(StatType.Experience).Restore(ExperienceOnDeath);
+            GameManager.Instance.AddExperience(ExperienceOnDeath);
             GameManager.Instance.AddGold((ulong)Gold);
         }
 
+        DieAction?.Invoke();
     }
 
     private void OnDrawGizmos()

@@ -9,9 +9,13 @@ public class CharacterStats
     [SerializeField] private Stat[] stats;
     [SerializeField] private ResourceStat[] resourceStats;
     private readonly Dictionary<StatType, Stat> statDict = new();
+    public bool IsInitialized { get; private set; } = false;
 
     public void Initalize()
     {
+        if (IsInitialized) return;
+        IsInitialized = true;
+
         foreach (var stat in stats)
             statDict[stat.Type] = stat;
 

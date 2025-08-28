@@ -36,6 +36,10 @@ public class CharacterAI : MonoBehaviour
     public float AttackRate => stats.GetStat(StatType.AttackRate).FinalValue;
     public float Defense => stats.GetStat(StatType.Defense).FinalValue;
 
+    public float Experience => stats.GetResourceStat(StatType.Experience).FinalValue;
+    public float ExperienceOnDeath => stats.GetStat(StatType.ExperienceOnDeath).FinalValue;
+    public float Gold => stats.GetStat(StatType.Gold).FinalValue;
+
 
     private void Awake()
     {
@@ -88,6 +92,16 @@ public class CharacterAI : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} 사망");
         gameObject.SetActive(false);
+
+        // 추가적인 사망 처리 (예: 경험치 획득, 아이템 드랍 등)
+        if (teamType == TeamType.Enemy)
+        {
+            // 플레이어에게 경험치와 골드 지급
+            var player = GameManager.Instance.player;
+            player?.Stats.GetResourceStat(StatType.Experience).Restore(ExperienceOnDeath);
+            GameManager.Instance.AddGold((ulong)Gold);
+        }
+
     }
 
     private void OnDrawGizmos()

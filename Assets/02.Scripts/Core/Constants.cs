@@ -12,6 +12,8 @@ namespace Constants
         HP,
         MP,
         Experience,
+        ExperienceOnDeath, // 경험치 (죽었을 때 주는 경험치)
+        Gold,
         Damage,
         SightRange,
         AttackRange,

@@ -52,8 +52,8 @@ public class HUD : MonoBehaviour
 
     public void OnExperienceChanged(float _)
     {
-        ResourceStat mp = character.Stats.GetResourceStat(StatType.Experience);
-        expBar.FillAmount(mp.CurrentValue, mp.FinalValue);
+        ResourceStat exp = character.Stats.GetResourceStat(StatType.Experience);
+        expBar.FillAmount(exp.CurrentValue, exp.FinalValue);
     }
 
     public void OnStageChanged(string stage) => stageText.text = stage;

@@ -34,4 +34,10 @@ public class GameManager : Singleton<GameManager>
         GoldChanged?.Invoke(gold);
     }
 
+    public void AddGold(ulong amount)
+    {
+        gold += amount;
+        GoldChanged?.Invoke(gold);
+    }
+
 }

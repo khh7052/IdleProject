@@ -1,6 +1,7 @@
 using UnityEngine;
 namespace Constants
 {
+
     public enum StatType
     {
         HP,

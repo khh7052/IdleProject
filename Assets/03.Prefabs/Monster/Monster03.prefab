@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 625348701996615407}
   - component: {fileID: 3559135138150881763}
   m_Layer: 7
-  m_Name: AI
+  m_Name: Monster03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +183,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4487130098251836454}
@@ -217,7 +217,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0c0d42a22e53fa94bbb15d7a66f0e081, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -277,17 +277,17 @@ MonoBehaviour:
   stats:
     stats:
     - type: 5
-      baseValue: 5
+      baseValue: 20
     - type: 6
       baseValue: 5
     - type: 7
       baseValue: 3
     - type: 8
-      baseValue: 1
+      baseValue: 3
     - type: 9
       baseValue: 0
     - type: 10
-      baseValue: 2
+      baseValue: 1
     - type: 4
       baseValue: 200
     - type: 3

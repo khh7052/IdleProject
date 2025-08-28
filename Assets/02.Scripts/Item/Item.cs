@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Constants;
 
-[System.Serializable]
+[Serializable]
 public class Item
 {
     public ItemData data;
@@ -19,6 +21,13 @@ public class Item
         {
             gold -= cost;
             level++;
+
+            // ½ºÅÈ Àû¿ë
+            CharacterStats stats = GameManager.Instance.player.Stats;
+            stats.Unequip(this);
+            stats.Equip(this);
+
+            Debug.Log($"Upgraded {Name} to Level {level}");
             return true;
         }
         return false;

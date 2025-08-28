@@ -6,6 +6,7 @@ using Constants;
 [Serializable]
 public class Stat
 {
+    public event Action IsDirtyChanged;
     public event Action<float> FinalValueChanged;
 
     [SerializeField] private StatType type;
@@ -96,5 +97,9 @@ public class Stat
         FinalValueChanged?.Invoke(finalValue);
     }
 
-    private void MarkDirty() => isDirty = true;
+    private void MarkDirty()
+    {
+        isDirty = true;
+        IsDirtyChanged?.Invoke();
+    }
 }

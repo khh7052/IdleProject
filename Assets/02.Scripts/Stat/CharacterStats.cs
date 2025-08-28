@@ -31,6 +31,7 @@ public class CharacterStats
         if (statDict.TryGetValue(type, out var stat))
             return stat;
 
+        Debug.LogWarning($"Stat of type {type} not found.");
         return null;
     }
     public ResourceStat GetResourceStat(StatType type)
@@ -57,9 +58,7 @@ public class CharacterStats
     public void Equip(Item item)
     {
         foreach (var mod in item.GetModifiers())
-        {
             AddModifier(mod);
-        }
     }
 
     // 아이템 해제 (아이템의 Modifier 제거)

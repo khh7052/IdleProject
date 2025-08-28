@@ -16,7 +16,6 @@ public class InformationUI : MonoBehaviour
     private void Awake()
     {
         Initialize();
-        RefreshText();
     }
 
     void Initialize()
@@ -24,20 +23,24 @@ public class InformationUI : MonoBehaviour
         if(target == null)
             target = GameManager.Instance.player;
 
-
         foreach (var statType in statTypes)
         {
             var text = Instantiate(textPrefab, textParent);
             textDict.Add(statType, text);
+
+            Stat stat = target.Stats.GetStat(statType);
+            stat.IsDirtyChanged += () => RefreshText(statType);
+            RefreshText(statType);
         }
     }
 
-    public void RefreshText()
+    public void RefreshText(StatType statType)
     {
-        foreach (var pair in textDict)
+        if (textDict.TryGetValue(statType, out var text))
         {
-            float value = target.Stats.GetStat(pair.Key).FinalValue;
-            pair.Value.text = $"{pair.Key}: {value:F1}";
+            float value = target.Stats.GetStat(statType).FinalValue;
+            Debug.Log($"Refresh {statType} : {value}");
+            text.text = $"{statType}: {value:F2}";
         }
     }
 

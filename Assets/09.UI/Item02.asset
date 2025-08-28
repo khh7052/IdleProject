@@ -16,9 +16,9 @@ MonoBehaviour:
   itemType: 0
   icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   baseModifiers:
-  - statType: 6
+  - statType: 8
     modifierType: 0
-    value: 0
+    value: -0.1
     useDuration: 0
     duration: 0
   upgradeValuePerLevel: 0.05

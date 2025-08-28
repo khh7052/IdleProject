@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413dea7395ec5a64fbee24f81c9cbee4, type: 3}
   m_Name: Stage01
   m_EditorClassIdentifier: 
-  stageName: 
-  sceneName: 
-  spawnDatas: []
+  stageName: Stage01
+  sceneName: StageTest
+  spawnDatas:
+  - monsterPrefab: {fileID: 0}
+    spawnCount: 0
+    spawnInterval: 0

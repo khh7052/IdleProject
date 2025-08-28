@@ -1,13 +1,21 @@
 using UnityEngine;
 namespace Constants
 {
+    public enum TeamType
+    {
+        Player,
+        Enemy,
+    }
 
     public enum StatType
     {
         HP,
         MP,
         Experience,
-        Attack,
+        Damage,
+        SightRange,
+        AttackRange,
+        AttackRate,
         Defense,
         MoveSpeed,
     }

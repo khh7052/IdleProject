@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 109703294}
   - component: {fileID: 109703296}
   - component: {fileID: 109703295}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Gold_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 379043122}
   - component: {fileID: 379043121}
   - component: {fileID: 379043120}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 424499369}
   - component: {fileID: 424499371}
   - component: {fileID: 424499370}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 623067533}
   - component: {fileID: 623067532}
   - component: {fileID: 623067531}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -704,7 +704,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    stats: []
+    stats:
+    - type: 4
+      baseValue: 5
+    - type: 5
+      baseValue: 3
+    - type: 8
+      baseValue: 3
     resourceStats:
     - type: 0
       baseValue: 100
@@ -715,8 +721,13 @@ MonoBehaviour:
     - type: 2
       baseValue: 100
       currentValue: 0
+  teamType: 0
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   navmeshController: {fileID: 623067533}
   animationHandler: {fileID: 623067531}
+  useGizmo: 0
 --- !u!114 &623067533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,7 +868,7 @@ GameObject:
   - component: {fileID: 949168959}
   - component: {fileID: 949168961}
   - component: {fileID: 949168960}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,7 +1141,7 @@ GameObject:
   - component: {fileID: 1433614471}
   - component: {fileID: 1433614473}
   - component: {fileID: 1433614472}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ExpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1206,7 +1217,7 @@ GameObject:
   - component: {fileID: 1592462887}
   - component: {fileID: 1592462889}
   - component: {fileID: 1592462888}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ExpFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1280,7 +1291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1599382690}
   - component: {fileID: 1599382691}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1351,7 @@ GameObject:
   - component: {fileID: 1734940389}
   - component: {fileID: 1734940391}
   - component: {fileID: 1734940390}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: MPFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1430,7 @@ GameObject:
   - component: {fileID: 1777483237}
   - component: {fileID: 1777483236}
   - component: {fileID: 1777483235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1474,10 +1485,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    stats: []
-    resourceStats: []
+    stats:
+    - type: 3
+      baseValue: 5
+    - type: 4
+      baseValue: 5
+    - type: 5
+      baseValue: 2
+    - type: 6
+      baseValue: 1
+    - type: 8
+      baseValue: 2
+    resourceStats:
+    - type: 0
+      baseValue: 100
+      currentValue: 100
+  teamType: 1
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   navmeshController: {fileID: 1777483235}
   animationHandler: {fileID: 0}
+  useGizmo: 1
 --- !u!136 &1777483238
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1577,7 +1606,7 @@ GameObject:
   - component: {fileID: 1993610680}
   - component: {fileID: 1993610682}
   - component: {fileID: 1993610681}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: MPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1653,7 +1682,7 @@ GameObject:
   - component: {fileID: 2076482612}
   - component: {fileID: 2076482614}
   - component: {fileID: 2076482613}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Stage_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -75,6 +75,10 @@ public class CharacterAI : MonoBehaviour
         // 이동 속도 초기화
         navmeshController.MoveSpeed = MoveSpeed;
         stats.GetStat(StatType.MoveSpeed).FinalValueChanged += (value) => navmeshController.MoveSpeed = value;
+
+        // 적 캐릭터 수 카운트
+        if(teamType == TeamType.Enemy)
+            GameManager.Instance.MonsterCount++;
     }
 
     private void Update()
@@ -85,7 +89,7 @@ public class CharacterAI : MonoBehaviour
     public void Initialize()
     {
         ResourceStat hp = stats.GetResourceStat(StatType.HP);
-        hp.Initialize();
+        hp.SetCurrentValue(hp.FinalValue);
     }
 
     public void TakeDamage(float damage)
@@ -119,6 +123,7 @@ public class CharacterAI : MonoBehaviour
             var player = GameManager.Instance.Player;
             GameManager.Instance.AddExperience(ExperienceOnDeath);
             GameManager.Instance.AddGold((ulong)Gold);
+            GameManager.Instance.MonsterCount--;
         }
 
         DieAction?.Invoke();

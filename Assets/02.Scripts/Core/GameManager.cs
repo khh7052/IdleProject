@@ -10,14 +10,31 @@ public class GameManager : Singleton<GameManager>
     public event Action<StageData> StageChanged;
     public event Action<ulong> GoldChanged;
     public event Action<int> LevelChanged;
+    public event Action<int> MonsterCountChanged;
 
     [SerializeField] private CharacterAI playerPrefab;
     [SerializeField] private MonsterSpawner monsterSpawner;
     [SerializeField] private StageData stage;
     [SerializeField] private ulong gold = 100;
     [SerializeField] private int level = 1;
+    [SerializeField] private int maxMonsterCount = 20;
 
+    private int monsterCount = 0;
     private CharacterAI player;
+
+    public int MaxMonsterCount => maxMonsterCount;
+    public int MonsterCount
+    {
+        get => monsterCount;
+        set
+        {
+            monsterCount = value;
+
+            if (monsterCount > maxMonsterCount) GameOver();
+            else MonsterCountChanged?.Invoke(monsterCount);
+
+        }
+    }
     public CharacterAI Player
     {
         get
@@ -62,6 +79,7 @@ public class GameManager : Singleton<GameManager>
 
         player.Initialize();
         player.DieAction += GameOver;
+        monsterCount = 0;
         monsterSpawner.StartSpawn(stage);
         DontDestroyOnLoad(player.gameObject);
     }

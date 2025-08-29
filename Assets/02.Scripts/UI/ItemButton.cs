@@ -28,7 +28,7 @@ public class ItemButton : MonoBehaviour
     {
         iconImage.sprite = item.data.icon;
         nameText.text = $"{item.Name} Lv.{item.Level}";
-        costText.text = $"Cost: {item.data.GetUpgradeCost(item.Level):F1}G";
+        costText.text = $"Cost: {item.data.GetUpgradeCost():F1}G";
         button.interactable = item.Level < item.data.maxLevel;
     }
 

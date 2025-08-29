@@ -7,31 +7,73 @@ using Constants;
 
 public class GameManager : Singleton<GameManager>
 {
-    public event Action<string> StageChanged;
+    public event Action<StageData> StageChanged;
     public event Action<ulong> GoldChanged;
     public event Action<int> LevelChanged;
 
-    [SerializeField] private string stage = "Statge";
+    [SerializeField] private CharacterAI playerPrefab;
+    [SerializeField] private MonsterSpawner monsterSpawner;
+    [SerializeField] private StageData stage;
     [SerializeField] private ulong gold = 100;
     [SerializeField] private int level = 1;
 
-    public CharacterAI player;
+    private CharacterAI player;
+    public CharacterAI Player
+    {
+        get
+        {
+            if (player == null)
+                player = Instantiate(playerPrefab);
 
-    public string CurrentStage => stage;
+            return player;
+        }
+    }
+
+    public StageData CurrentStage => stage;
     public ulong Gold => gold;
     public int Level => level;
 
     protected override void Initialize()
     {
         base.Initialize();
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterAI>();
 
-        player.DieAction += GameOver;
+        SceneManager.activeSceneChanged += OnActiveSceneChanged;
     }
 
+    public void OnActiveSceneChanged(Scene current, Scene next)
+    {
+        if (next.name != "LobbyScene")
+        {
+            if (stage != null)
+                StartGame();
+        }
+    }
 
-    public void SetStage(string stage)
+    public void StartGame()
+    {
+        if (player == null)
+            player = Instantiate(playerPrefab);
+
+        if (player)
+            player.gameObject.SetActive(true);
+
+        if (monsterSpawner == null)
+            monsterSpawner = FindAnyObjectByType<MonsterSpawner>();
+
+        player.Initialize();
+        player.DieAction += GameOver;
+        monsterSpawner.StartSpawn(stage);
+        DontDestroyOnLoad(player.gameObject);
+    }
+    public void GameOver()
+    {
+        Debug.Log("Game Over");
+        monsterSpawner.StopSpawn();
+        player.DieAction -= GameOver;
+        SceneManager.LoadScene("LobbyScene");
+    }
+
+    public void SetStage(StageData stage)
     {
         this.stage = stage;
         StageChanged?.Invoke(stage);
@@ -74,11 +116,4 @@ public class GameManager : Singleton<GameManager>
             Debug.Log($"Level Up! New Level: {Level}");
         }
     }
-
-    public void GameOver()
-    {
-        Debug.Log("Game Over");
-        SceneManager.LoadScene("LobbyScene");
-    }
-
 }

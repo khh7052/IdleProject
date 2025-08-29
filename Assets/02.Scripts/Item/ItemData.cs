@@ -12,11 +12,12 @@ public class ItemData : ScriptableObject
 
     public float upgradeValuePerLevel = 0.05f; 
     public int maxLevel = 100;
+    public int level = 0;
 
     public float baseUpgradeCost = 10;
     public float costMultiplier = 1.2f;
 
-    public float GetUpgradeCost(int level)
+    public float GetUpgradeCost()
     {
         level = Mathf.Clamp(level, 1, maxLevel);
         return baseUpgradeCost * Mathf.Pow(costMultiplier, level - 1);

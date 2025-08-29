@@ -21,7 +21,7 @@ public class InformationUI : MonoBehaviour
     void Initialize()
     {
         if(target == null)
-            target = GameManager.Instance.player;
+            target = GameManager.Instance.Player;
 
         foreach (var statType in statTypes)
         {

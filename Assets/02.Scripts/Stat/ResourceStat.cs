@@ -12,6 +12,7 @@ public class ResourceStat : Stat
     public override void Initialize()
     {
         base.Initialize();
+        SetCurrentValue(FinalValue);
         FinalValueChanged += OnFinalValueChanged;
     }
 

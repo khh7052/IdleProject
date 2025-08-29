@@ -16,7 +16,7 @@ public class AttackState : CharacterState
         NavmeshController.IsStopped = true; // ¿Ãµø ∏ÿ√„
 
         if (character.TeamType == TeamType.Enemy)
-            attackTarget = GameManager.Instance.player.transform;
+            attackTarget = GameManager.Instance.Player.transform;
     }
 
     public override void Execute()

@@ -82,6 +82,12 @@ public class CharacterAI : MonoBehaviour
         stateMachine.Execute();
     }
 
+    public void Initialize()
+    {
+        ResourceStat hp = stats.GetResourceStat(StatType.HP);
+        hp.Initialize();
+    }
+
     public void TakeDamage(float damage)
     {
         // 방어력 적용
@@ -110,7 +116,7 @@ public class CharacterAI : MonoBehaviour
         if (teamType == TeamType.Enemy)
         {
             // 플레이어에게 경험치와 골드 지급
-            var player = GameManager.Instance.player;
+            var player = GameManager.Instance.Player;
             GameManager.Instance.AddExperience(ExperienceOnDeath);
             GameManager.Instance.AddGold((ulong)Gold);
         }

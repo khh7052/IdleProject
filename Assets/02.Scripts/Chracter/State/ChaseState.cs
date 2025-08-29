@@ -17,7 +17,7 @@ public class ChaseState : CharacterState
         NavmeshController.IsStopped = false; // 이동 시작
 
         if(character.TeamType == TeamType.Enemy)
-            chaseTarget = GameManager.Instance.player.transform;
+            chaseTarget = GameManager.Instance.Player.transform;
     }
 
     public override void Execute()

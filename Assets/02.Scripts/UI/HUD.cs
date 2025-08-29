@@ -58,7 +58,7 @@ public class HUD : MonoBehaviour
         expBar.FillAmount(exp.CurrentValue, exp.FinalValue);
     }
 
-    public void OnStageChanged(string stage) => stageText.text = stage;
+    public void OnStageChanged(StageData stage) => stageText.text = stage.stageName;
     public void OnGoldChanged(ulong gold) => goldText.text = $"{gold}G";
     public void OnLevelChanged(int level) => levelText.text = $"Lv.{level}";
 

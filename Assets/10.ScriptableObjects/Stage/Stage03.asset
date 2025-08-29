@@ -10,11 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 413dea7395ec5a64fbee24f81c9cbee4, type: 3}
-  m_Name: Stage01
+  m_Name: Stage03
   m_EditorClassIdentifier: 
-  stageName: Stage01
-  sceneName: Stage01
+  stageName: Stage03
+  sceneName: Stage03
   spawnDatas:
   - monsterPrefab: {fileID: 7034743711581220269, guid: 8bbd2b04d70e1d943bc58d022069c2be, type: 3}
+    spawnCount: 3
+    spawnInterval: 1
+  - monsterPrefab: {fileID: 7034743711581220269, guid: 0964b9c00aa2e0c48b486461e1ee0ef5, type: 3}
     spawnCount: 1
     spawnInterval: 2
+  - monsterPrefab: {fileID: 7034743711581220269, guid: 7ec5ac2bed029f14c8e7a9aacc59adb4, type: 3}
+    spawnCount: 1
+    spawnInterval: 5

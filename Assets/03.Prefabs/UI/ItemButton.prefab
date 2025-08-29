@@ -359,7 +359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
     data: {fileID: 0}
-    level: 1
   iconImage: {fileID: 6653869993444489849}
   button: {fileID: 782333348558967516}
   nameText: {fileID: 1560054672373648914}

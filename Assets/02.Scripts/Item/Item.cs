@@ -7,27 +7,26 @@ using Constants;
 public class Item
 {
     public ItemData data;
-    public int level = 1;
 
-    public int Level => level;
+    public int Level => data.level;
     public string Name => data.itemName;
     public ItemType Type => data.itemType;
 
     // 업그레이드 시도
     public bool TryUpgrade(ref float gold)
     {
-        float cost = data.GetUpgradeCost(level);
-        if (gold >= cost && level < data.maxLevel)
+        float cost = data.GetUpgradeCost();
+        if (gold >= cost && Level < data.maxLevel)
         {
             gold -= cost;
-            level++;
+            data.level++;
 
             // 스탯 적용
-            CharacterStats stats = GameManager.Instance.player.Stats;
+            CharacterStats stats = GameManager.Instance.Player.Stats;
             stats.Unequip(this);
             stats.Equip(this);
 
-            Debug.Log($"Upgraded {Name} to Level {level}");
+            Debug.Log($"Upgraded {Name} to Level {Level}");
             return true;
         }
         return false;
@@ -37,7 +36,7 @@ public class Item
     public List<StatModifierData> GetModifiers()
     {
         var list = new List<StatModifierData>();
-        float multiplier = 1f + data.upgradeValuePerLevel * (level - 1);
+        float multiplier = 1f + data.upgradeValuePerLevel * (Level - 1);
 
         foreach (var mod in data.baseModifiers)
         {

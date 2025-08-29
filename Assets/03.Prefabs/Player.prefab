@@ -569,7 +569,6 @@ GameObject:
   - component: {fileID: 3743930273004804720}
   - component: {fileID: 1325021114958008230}
   - component: {fileID: 1728602029248903478}
-  - component: {fileID: 2220651087975690725}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -742,22 +741,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   navmeshController: {fileID: 1325021114958008230}
-  animationHandler: {fileID: 2220651087975690725}
+  animationHandler: {fileID: 0}
   hpBar: {fileID: 0}
   useGizmo: 1
---- !u!114 &2220651087975690725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6204644039579237626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b13d2852b9528c47a0d1c6ea1e44d72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
 --- !u!1 &6498757179250263169
 GameObject:
   m_ObjectHideFlags: 0
